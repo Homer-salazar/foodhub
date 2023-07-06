@@ -1,0 +1,21 @@
+:root{
+    --text: #0e0c13;
+    --background: #f9f9fb;
+    --primary: #d2bdd6;
+    --secondary: #ecdfe8;
+    --accent: #d6bdce;
+}
+
+body{
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;;
+}
+
+#index{
+    background-image: url(../assets/index-bg.svg);
+    background-position: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
