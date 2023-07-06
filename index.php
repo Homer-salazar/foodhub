@@ -10,9 +10,14 @@
         <title>Foodhub</title>
     </head>
     <body> 
+        <?php 
+            require_once("./services/__api.php");
+            $mealDB = new MealDB();
+            $randomMeal = $mealDB->getRandomMeal();
+        ?>
         <div id="index" class="container-fluid">
             <div class="home">
-                <nav>
+                <nav class="pb-10">
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="https://flowbite.com/" class="flex items-center">
                             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
@@ -55,19 +60,36 @@
                                     <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:text-blue-700 md:p-0">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">About</a>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Recipes</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Services</a>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-blue-700 md:p-0">Contact</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
+                <section>
+                    <div class="flex justify-center items-center mt-10 h-[60vh]">
+                        <div class="grid md:grid-cols-2 grid-cols-1 gap-4">
+                            <div class="max-sm:order-2">
+                                <h1 class="text-6xl font-bold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"><?=$mealDB->mealName; ?></h1>
+                                <div class="flex justify-center gap-4 py-3 px-3 font-semibold">
+                                    <a href="<?=$mealDB->mealYoutube ?>" target="_blank"  class="px-4 py-2 bg-transparent border border-5-[--secondary] rounded-lg hover:bg-[var(--primary)]">Watch now</a>
+                                    <button class="px-4 py-2 bg-[var(--accent)] rounded">Read Now</button>
+                                </div>
+                            </div>
+                            <div class="max-sm:order-1">
+                                <img class="w-72 mx-auto max-w-full rounded-lg" src="<?=$mealDB->mealThumb ?>" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
 
             </div>
         </div>
-        <script src="./js/script.js"></script>
+        <!-- <script src="./js/script.js"></script> -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
 
