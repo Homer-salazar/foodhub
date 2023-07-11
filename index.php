@@ -7,10 +7,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-        />       
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+
         <title>Foodhub</title>
     </head>
     <body> 
@@ -20,8 +19,8 @@
             $randomMeal = $mealDB->getRandomMeal();
         ?>
         <div id="index" class="container-fluid">
-            <div class="home h-screen">
-                <nav class="pb-10">
+            <div class="home h-screen  overflow-x-hidden">
+                <nav>
                     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                         <a href="https://flowbite.com/" class="flex items-center">
                             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
@@ -61,92 +60,94 @@
                             </div>
                             <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium max-sm:bg-[var(--secondary)] border border-gray-100 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0 ">
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:text-[var(--primary)] md:p-0">Home</a>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:text-white md:p-0">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-[var(--primary)] md:p-0">Recipes</a>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-white md:p-0">Recipes</a>
                                 </li>
                                 <li>
-                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-[var(--primary)] md:p-0">Contact</a>
+                                    <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-[var(--primary)] md:hover:bg-transparent md:hover:text-white md:p-0">Contact</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </nav>
-                <section>
-                    <!-- <div class="flex justify-center items-center mt-10 h-[60vh]">
-                        <div class="grid md:grid-cols-2 grid-cols-1 gap-4">
-                            <div class="max-sm:order-2">
-                                <h1 class="text-6xl font-bold text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"><?=$mealDB->mealName; ?></h1>
-                                <p class="text-xl text-center py-3"><?=$mealDB->mealArea ?> &#x2022; <?=$mealDB->mealCategory ?></p>
-                                <div class="flex justify-center gap-4 py-3 px-3 font-semibold">
-                                    <a href="<?=$mealDB->mealYoutube; ?>" target="_blank"  class="px-4 py-2 bg-transparent border border-5-[--secondary] rounded-lg hover:bg-[var(--primary)]">Watch now</a>
-                                    <a href="./pages/recipes.php?id=<?=$mealDB->mealId; ?>" class="px-4 py-2 bg-[var(--accent)] rounded">Read Now</a>
-                                </div>
-                            </div>
-                            <div class="max-sm:order-1">
-                                <img class="w-72 mx-auto max-w-full rounded-lg shadow-lg ring-2 ring-[var(--secondary)]" src="<?=$mealDB->mealThumb ?>" alt="">
+                <div class="hero h-[75vh]">
+                    <section class="md:ml-8 max-sm:p-4 mt-17">
+                        <h1 class="font-bold text-3xl mb-3">Discover</h1>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <?php 
+                                    for ($i = 0; $i < 4; $i++) { 
+                                    $randomMeal = $mealDB->getRandomMeal(); 
+                                ?>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="block max-w-md p-6 bg-[var(--accent)] border border-gray-200 rounded-lg shadow hover:bg-gray-100">
+                                            <div class="grid grid-cols-2 gap-5">
+                                                <div>
+                                                    <p class="font-bold max-sm:text-xl"><?= $mealDB->mealName; ?></p>
+                                                    <p><?= $mealDB->mealArea ?> &#x2022; <?= $mealDB->mealCategory ?></p>
+                                                </div>
+                                                <div>
+                                                    <img class="rounded-lg" src="<?= $mealDB->mealThumb ?>" alt="">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                <?php } ?>
                             </div>
                         </div>
-                    </div> -->
+                    </section>
+                    <section class="md:ml-8 mt-10 max-sm:p-4">
+                        <h1 class="font-bold text-xl mb-3">Categories</h1>
+                        <div class="swipers">
+                            <div class="swiper-wrapper">
+                                <?php 
+                                        $mealDB = new MealDB();
+                                        $categories = $mealDB->getAllCategories();
+                                        if ($categories !== null) {
+                                            foreach ($categories as $category) {                  
+                                ?>
+                                    <div class="swiper-slide">
+                                        <a href="#" class="block max-w-md p-12 bg-[var(--accent)] bg-cover bg-center border border-gray-200 rounded-lg shadow" style="background-image: url('<?=$category['strCategoryThumb'] ?>');">
+                                            <div class="grid gap-5 absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-center">
+                                            <p class="text-white font-bold"><?=$category['strCategory'] ?></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                <?php } 
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <section class="mt-10 p-5 mb-10">
+                    <h1 class="font-bold text-xl mb-3">Popular recipes</h1>
+                    <?php 
+                        foreach (range(1, 1) as $i) {
+                        $randomMeal = $mealDB->getRandomMeal(); 
+                    ?>                           
+                        <div class="grid grid-cols-2 max-sm:grid-cols-1 items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100">
+                            <img class="object-cover bg-cover w-full rounded-t-lg h-96  md:rounded-none md:rounded-l-lg" src="<?= $mealDB->mealThumb ?>" alt="">
+                            <div class="flex flex-col justify-between p-4 leading-normal">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900"><?= $mealDB->mealName; ?></h5>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><?=$mealDB->mealArea ?> &#x2022; <?=$mealDB->mealCategory ?></p>
+                                <div class="grid grid-cols-2 gap-4 w-72 text-center">
+                                    <a href="<?=$mealDB->mealYoutube; ?>" target="_blank"  class="px-4 py-2 bg-transparent border border-2-[--primary] rounded-lg hover:bg-[var(--primary)]">Watch now</a>
+                                    <a href="./pages/recipes.php?id=<?=$mealDB->mealId; ?>" class="px-4 py-2 bg-[var(--accent)] rounded">Read Now</a>                     
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </section>
             </div>
-            <div class="recommendation h-screen p-2">
-                <div class="grid md:place-items-center">
-                    <h1 class="font-bold max-sm:text-xl text-4xl mb-3 mt-1">Today's Recommendation</h1>
-                </div>
-                <!-- <div class="card-section overflow-hidden p-3" style="scrollbar-width: thin;">
-                    <div class="swiper-container">
-                        <div class="swiper-wrapper mt-2 gap-2 cursor-pointer">
-                            <?php 
-                                for ($i = 0; $i < 10; $i++) { 
-                                $randomMeal = $mealDB->getRandomMeal();
-
-                            ?>
-                                <div class="swiper-slide">
-                                    <div class="max-w-sm border border-gray-200 rounded-lg shadow dark:bg-[var(--accent)] dark:border-[var(--secondary)]">
-                                        <div>
-                                            <img class="rounded-t-lg md:h-auto" src="<?=$mealDB->mealThumb ?>" alt="" />
-                                        </div>
-                                        <div class="p-5">
-                                            <a href="#">
-                                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:><?=$mealDB->mealName; ?></h5>
-                                            </a>
-                                            <p class="mb-3 font-normal"><?=$mealDB->mealArea ?> &#x2022; <?=$mealDB->mealCategory ?></p>
-                                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center bg-[var(--secondary)] rounded-lg hover:bg-[var(--secondary)] focus:ring-4 focus:outline-none focus:ring-[var(--secondary)]">
-                                                Read more
-                                                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-            <div class="category h-[20vh] p-4">
-                <h1 class="pb-2">Categories</h1>
-                <div class="grid grid-cols-7">
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">
-                        <i class="fa-solid fa-drumstick-bite fa-2x"></i><br>
-                        <span class="text-2xl">
-                            Chicken
-                        </span>
-                    </button>
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Default</button>
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Default</button>
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Default</button>
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Default</button>
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Default</button>
-                    <button type="button" class="bg-[var(--primary)] hover:bg-[var(--secondary)] focus:ring-4 focus:ring-[var(--secondary)] font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Default</button>
-                </div>
-            </div>
         </div>
-
-v
+        <?php 
+            require_once("./layouts/footer.php");
+        ?>
+        
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
         <!-- Initialize Swiper -->
@@ -156,17 +157,31 @@ v
                 spaceBetween: 10,
                 breakpoints: {
                     640: {
-                        slidesPerView: 2,
-                        spaceBetween: 5,
+                        slidesPerView: 3,
+                        spaceBetween: 10,
                     },
                     768: {
                         slidesPerView: 3,
-                        spaceBetween: 20,
+                        spaceBetween: 7,
                     },
                 },
             });
-        </script>   
 
+            var swiper = new Swiper('.swipers', {
+                slidesPerView: 3,
+                spaceBetween: 10,
+                breakpoints: {
+                    640: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                    },
+                    768: {
+                        slidesPerView: 5,
+                        spaceBetween: 15,
+                    },
+                },
+            });
+        </script> 
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
     </body>

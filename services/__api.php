@@ -23,7 +23,20 @@
                 return null;
             }
         }
-
+        
+        public function getAllCategories() {
+            $url = $this->apiUrl . "categories.php";
+            $response = file_get_contents($url);
+            if ($response !== false) {
+                $data = json_decode($response, true);
+                $categories = $data['categories'];
+    
+                return $categories;
+            } else {
+                return null;
+            }
+        }
+    
         private function parseMealData($mealData) {
             $this->mealId = $mealData['idMeal'];
             $this->mealName = $mealData['strMeal'];
